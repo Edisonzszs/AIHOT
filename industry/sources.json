@@ -609,28 +609,6 @@
       "syndicate_fulltext": false
     },
     {
-      "id": "rss-superpowers-skills",
-      "name": "Superpowers · 社区技能集",
-      "kind": "rss",
-      "config": {
-        "feedUrl": "https://github.com/obra/superpowers/commits/main.atom",
-        "_aihot": {
-          "initialBackfillLimit": 10
-        }
-      },
-      "tier": "T2",
-      "first_party": false,
-      "owner_entity_id": null,
-      "participation_mode": "editorial",
-      "interval_minutes": 240,
-      "tags": [
-        "平台数据",
-        "Skills"
-      ],
-      "site_fulltext": false,
-      "syndicate_fulltext": false
-    },
-    {
       "id": "rss-vercel-skills",
       "name": "skills.sh Registry · Vercel",
       "kind": "rss",
