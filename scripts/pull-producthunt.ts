@@ -35,7 +35,7 @@ if (!tokenRes.ok || !tokenJson.access_token) {
 const postedAfter = new Date(Date.now() - 30 * 3600_000).toISOString();
 const query = `query {
   posts(first: ${limit}, order: VOTES, postedAfter: "${postedAfter}") {
-    edges { node { name tagline url votesCount createdAt } }
+    edges { node { name tagline description url votesCount createdAt } }
   }
 }`;
 const postsRes = await fetch("https://api.producthunt.com/v2/api/graphql", {
@@ -44,7 +44,7 @@ const postsRes = await fetch("https://api.producthunt.com/v2/api/graphql", {
   body: JSON.stringify({ query }),
   signal: AbortSignal.timeout(20_000),
 });
-const postsJson = await postsRes.json() as { data?: { posts?: { edges?: Array<{ node: { name: string; tagline: string; url: string; votesCount: number; createdAt: string } }> } }; errors?: unknown };
+const postsJson = await postsRes.json() as { data?: { posts?: { edges?: Array<{ node: { name: string; tagline: string; description: string; url: string; votesCount: number; createdAt: string } }> } }; errors?: unknown };
 const edges = postsJson.data?.posts?.edges ?? [];
 if (!edges.length) {
   console.log(JSON.stringify({ pulled: 0, note: "no posts in window", graphqlErrors: postsJson.errors ?? null }));
@@ -54,11 +54,16 @@ if (!edges.length) {
 const items = edges
   .map(({ node }) => node)
   .filter((p) => p.votesCount >= minVotes)
-  .map((p) => ({
-    title: `${p.name}：${p.tagline}（Product Hunt ${p.votesCount} 票）`,
-    url: p.url,
-    publishedAt: p.createdAt,
-  }));
+  .map((p) => {
+    // The analysis reads only this line (PH pages themselves sit behind Cloudflare), so carry the
+    // full pitch in it; the editorial step rewrites a clean Chinese title from it anyway.
+    const pitch = [p.tagline, p.description].filter(Boolean).join(" — ").replace(/\s+/g, " ").slice(0, 300);
+    return {
+      title: `${p.name}：${pitch}（Product Hunt ${p.votesCount} 票）`,
+      url: p.url,
+      publishedAt: p.createdAt,
+    };
+  });
 
 const pushRes = await fetch(`${apiBase}/api/ingest/items`, {
   method: "POST",
