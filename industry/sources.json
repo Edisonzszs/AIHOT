@@ -653,6 +653,28 @@
       "syndicate_fulltext": false
     },
     {
+      "id": "rss-tencent-skillhub",
+      "name": "腾讯 SkillHub · 官方仓库",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://github.com/Tencent/skillhub/commits/main.atom",
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 240,
+      "tags": [
+        "平台数据",
+        "Skills"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
       "id": "external-producthunt",
       "name": "Product Hunt · 当日热门",
       "kind": "external",
