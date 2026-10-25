@@ -9,8 +9,11 @@
  */
 export const CATEGORIES = [
   { key: "ai-models", label: "模型", section: "模型发布/更新", guide: "新模型、模型版本、权重开放、模型能力与价格变化的发布与评测结果" },
-  { key: "ai-products", label: "产品", section: "产品发布/更新", guide: "AI 产品、功能、应用、工具、API 与平台的发布和更新" },
-  { key: "industry", label: "行业", section: "行业动态", guide: "公司经营、融资并购、人事、合作、诉讼、监管与政策、市场与基础设施" },
+  { key: "ai-products", label: "产品", section: "产品发布/更新", guide: "重要 AI 产品、功能、API 与平台的官方发布和重大更新" },
+  { key: "oss-projects", label: "开源项目", section: "开源与工具", guide: "GitHub 等平台的热门开源项目与仓库动态：新项目上榜、版本里程碑、star 快速增长、模型与框架权重开放" },
+  { key: "agent-skills", label: "Skills", section: "开源与工具", guide: "Agent Skills、MCP 服务器、插件与技能市场（ClawHub、skills.sh 等）的新技能与生态动态" },
+  { key: "tools-discovery", label: "工具发现", section: "开源与工具", guide: "社区发现的 AI 工具与应用：Hugging Face Spaces、Product Hunt、开发者社区里被关注的新工具、Demo 和应用场景" },
+  { key: "industry", label: "行业", section: "行业动态", guide: "公司经营、融资并购、人事、合作、诉讼、监管与政策、市场与基础设施，以及企业应用 AI 的落地案例" },
   { key: "paper", label: "论文", section: "论文研究", guide: "研究论文、技术报告、基准与数据集" },
   { key: "tip", label: "教程", section: "技巧与观点", guide: "教程、实践经验、使用技巧、提示词与工具用法、深度技术讲解" },
   { key: "opinion", label: "观点", section: "技巧与观点", guide: "人物观点、评论、分析、访谈、现象与趋势讨论" },
@@ -26,7 +29,7 @@ export const ITEM_TYPES = ["model_release", "product_launch", "tool_or_prompt", 
 
 /** 每篇资料的第一个标签必须是这些“分类标签”之一。 */
 export const CATEGORY_TAGS = [
-  "产品更新", "模型发布", "论文/研究", "开源/仓库", "教程/实践", "现象/趋势", "大佬观点", "评测/基准", "安全/对齐", "行业动态", "政策/监管",
+  "产品更新", "模型发布", "论文/研究", "开源/仓库", "开源项目", "Skills/插件", "工具发现", "教程/实践", "现象/趋势", "大佬观点", "评测/基准", "安全/对齐", "行业动态", "政策/监管",
   "非AI/通用工具", "其他",
 ] as const;
 
@@ -45,6 +48,9 @@ export const TAG_SYNONYMS: Readonly<Record<string, string>> = {
   政策: "政策/监管", 监管: "政策/监管", 法规: "政策/监管", 安全: "安全/对齐", 对齐: "安全/对齐",
   论文: "论文/研究", 研究: "论文/研究", paper: "论文/研究", papers: "论文/研究",
   "open-source": "开源/仓库", 开源: "开源/仓库", 仓库: "开源/仓库", repo: "开源/仓库",
+  "热门项目": "开源项目", "trending": "开源项目", "star增长": "开源项目",
+  技能: "Skills/插件", 插件: "Skills/插件", skill: "Skills/插件", skills: "Skills/插件", "mcp服务器": "Skills/插件", "agent-skills": "Skills/插件",
+  "工具推荐": "工具发现", "新品发现": "工具发现", "工具评测": "工具发现",
   教程: "教程/实践", 玩法: "教程/实践", 指南: "教程/实践", 技巧: "教程/实践", 最佳实践: "教程/实践", 实践: "教程/实践",
   产品: "产品更新", 更新: "产品更新", 发布: "模型发布", 模型: "模型发布", 趋势: "现象/趋势", 现象: "现象/趋势", 观点: "大佬观点",
   视频生成: "视频", 非ai: "非AI/通用工具", "non-ai": "非AI/通用工具", 通用工具: "非AI/通用工具", 工程工具: "非AI/通用工具",

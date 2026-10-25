@@ -573,6 +573,53 @@
         "safety",
         "trends"
       ]
+    },
+    {
+      "slug": "oss-hot",
+      "name": "热门开源项目",
+      "group": "genre",
+      "tags": [
+        "开源项目",
+        "开源/仓库",
+        "开源生态"
+      ],
+      "definition": "GitHub Trending 与开源社区里正在升温的项目：应用场景、热度指标与版本里程碑，看哪些可以直接拿来用。",
+      "related": [
+        "open-source",
+        "agent-skills",
+        "tools-discovery"
+      ]
+    },
+    {
+      "slug": "agent-skills",
+      "name": "Agent Skills",
+      "group": "genre",
+      "tags": [
+        "Skills/插件",
+        "Agent",
+        "MCP/工具调用"
+      ],
+      "definition": "Agent Skills、MCP 服务器与插件生态：ClawHub、skills.sh 等市场的新技能，给 Agent 加装能力的最短路径。",
+      "related": [
+        "agent",
+        "oss-hot",
+        "tools-discovery"
+      ]
+    },
+    {
+      "slug": "tools-discovery",
+      "name": "工具与产品发现",
+      "group": "genre",
+      "tags": [
+        "工具发现",
+        "产品更新"
+      ],
+      "definition": "社区发现的 AI 工具与应用：Hugging Face Spaces、Product Hunt 与开发者社区里值得上手的新东西。",
+      "related": [
+        "oss-hot",
+        "agent-skills",
+        "product-updates"
+      ]
     }
   ]
 }

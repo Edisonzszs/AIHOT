@@ -1,5 +1,5 @@
 {
-  "$comment": "示范信源：首次启动时导入（scripts/seed.ts），已存在的不会被覆盖。之后在后台“信源”里增删改。字段说明见 docs/customize.md。",
+  "$comment": "面向 AI 产品经理团队的信源：海外官方博客与专业媒体 + 国内媒体 + GitHub Trending / Hugging Face / Agent Skills 市场等项目与工具发现源。首次启动时导入（scripts/seed.ts），已存在的不会被覆盖。之后在后台“信源”里增删改。字段说明见 docs/customize.md。",
   "sources": [
     {
       "id": "rss-openai-news",
@@ -380,6 +380,208 @@
       "interval_minutes": 180,
       "tags": [
         "个人"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-interconnects",
+      "name": "Interconnects (Nathan Lambert)",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.interconnects.ai/feed",
+        "_aihot": {
+          "initialBackfillLimit": 8
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 180,
+      "tags": [
+        "个人",
+        "研究"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-qbitai",
+      "name": "量子位",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://www.qbitai.com/feed",
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 60,
+      "tags": [
+        "媒体",
+        "中文"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-anthropic-news",
+      "name": "Anthropic News",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.anthropic.com/news",
+        "baseUrl": "https://www.anthropic.com",
+        "itemSelector": "a[href^='/news/']",
+        "denyUrlPrefixes": [
+          "https://www.anthropic.com/news/announcements",
+          "https://www.anthropic.com/news/safeguards",
+          "https://www.anthropic.com/news/policy",
+          "https://www.anthropic.com/news/partnerships",
+          "https://www.anthropic.com/news/features"
+        ],
+        "cacheToleranceSeconds": 3600,
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T1",
+      "first_party": true,
+      "owner_entity_id": "anthropic",
+      "participation_mode": "editorial",
+      "interval_minutes": 180,
+      "tags": [
+        "官方"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-github-trending-python",
+      "name": "GitHub Trending · Python（每日）",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://mshibanami.github.io/GitHubTrendingRSS/daily/python.xml",
+        "summaryIsBody": true,
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T1_5",
+      "first_party": false,
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 720,
+      "tags": [
+        "平台数据",
+        "开源"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-github-trending-typescript",
+      "name": "GitHub Trending · TypeScript（每日）",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://mshibanami.github.io/GitHubTrendingRSS/daily/typescript.xml",
+        "summaryIsBody": true,
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T1_5",
+      "first_party": false,
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 720,
+      "tags": [
+        "平台数据",
+        "开源"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "json-hf-spaces-trending",
+      "name": "Hugging Face Spaces · 热门",
+      "kind": "json_list",
+      "config": {
+        "url": "https://huggingface.co/api/trending?type=space",
+        "mode": "json_api",
+        "itemsPath": "recentlyTrending",
+        "titlePaths": ["repoData.title", "repoData.id"],
+        "summaryPaths": ["repoData.shortDescription", "repoData.ai_short_description"],
+        "authorPaths": ["repoData.author"],
+        "publishedAtPath": "repoData.lastModified",
+        "externalIdPath": "repoData.id",
+        "urlTemplate": "https://huggingface.co/spaces/{raw:repoData.id}",
+        "minNumeric": {
+          "path": "repoData.likes",
+          "min": 30
+        },
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T1_5",
+      "first_party": false,
+      "owner_entity_id": "hugging-face",
+      "participation_mode": "editorial",
+      "interval_minutes": 360,
+      "tags": [
+        "平台数据",
+        "工具"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "rss-clawhub-skills",
+      "name": "ClawHub · 新技能提交",
+      "kind": "rss",
+      "config": {
+        "feedUrl": "https://github.com/openclaw/clawhub/commits/main.atom",
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 240,
+      "tags": [
+        "平台数据",
+        "Skills"
+      ],
+      "site_fulltext": false,
+      "syndicate_fulltext": false
+    },
+    {
+      "id": "web-skillmap-news",
+      "name": "SkillMap · Agent Skills 动态",
+      "kind": "web_list",
+      "config": {
+        "url": "https://www.skillmap.top/en/news",
+        "baseUrl": "https://www.skillmap.top",
+        "itemSelector": "a[href^='/en/news/']",
+        "cacheToleranceSeconds": 3600,
+        "_aihot": {
+          "initialBackfillLimit": 10
+        }
+      },
+      "tier": "T2",
+      "first_party": false,
+      "owner_entity_id": null,
+      "participation_mode": "editorial",
+      "interval_minutes": 720,
+      "tags": [
+        "平台数据",
+        "Skills"
       ],
       "site_fulltext": false,
       "syndicate_fulltext": false
