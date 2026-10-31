@@ -5,8 +5,8 @@
 需要一台装了 Docker（带 Compose）的机器。云服务器建议至少 2 核、4 GB 内存，构建镜像时要用到。
 
 ```bash
-git clone https://github.com/KKKKhazix/AIHOT.git myhot
-cd myhot
+git clone https://github.com/Edisonzszs/AIHOT.git guanchao
+cd guanchao
 node scripts/init-env.ts --llm-key <你的模型 API Key>
 docker compose up -d --build
 ```
@@ -47,6 +47,8 @@ MCP 默认接受 `SITE_URL` 的主机以及 `localhost`、`127.0.0.1`、`[::1]`�
 
 ### 更新
 
+以下 `git pull` 适用于通过 Git 克隆安装的站点。当前 AI 观潮云端 `/root/aihot` 使用文件上传部署，没有 `.git` 目录：需要先上传经过验证的变更，保留服务器 `.env` 和数据卷，再执行下面的构建与启动步骤；GitHub 推送不会自动部署服务器。
+
 先按下节备份数据库。构建完成后停止旧服务，再运行迁移和新版服务：
 
 ```bash
@@ -79,7 +81,7 @@ docker compose run --rm setup && docker compose up -d
 下面的手动导出只包含数据库，不包含上述附件目录：
 
 ```bash
-docker compose exec -T db pg_dump -U aihot aihot | gzip > myhot-$(date +%F).sql.gz
+docker compose exec -T db pg_dump -U aihot aihot | gzip > guanchao-$(date +%F).sql.gz
 ```
 
 数据都在三个 Docker 卷里：`db`（数据库）、`data`（上传的图片、图片缓存、本地备份）、`caddy`（证书）。`docker compose down` 不会删除它们；`docker compose down -v` 会。

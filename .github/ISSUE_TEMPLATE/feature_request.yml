@@ -5,8 +5,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        还在探索的想法可以先到 [想法交流区](https://github.com/KKKKhazix/AIHOT/discussions/categories/ideas) 讨论。
-        本仓库不提供完整运营信源名单，也不持续维护微博、小红书等平台的专用采集适配；可参考 [信源文档](https://github.com/KKKKhazix/AIHOT/blob/main/docs/sources.md) 接入外部采集结果。
+        请说明建议对 AI 观潮读者的实际价值，以及遇到的具体问题。
+        信源接入方式可参考本项目的 [信源文档](https://github.com/Edisonzszs/AIHOT/blob/main/docs/sources.md)；不要假设第三方平台一定开放 API 或允许全文转载。
   - type: textarea
     id: problem
     attributes:

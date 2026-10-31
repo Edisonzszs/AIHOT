@@ -21,7 +21,7 @@ export const SITE = {
   /** 默认域名，只在没设置 SITE_URL 时使用。 */
   defaultUrl: "http://localhost:3000",
   /**
-   * MCP 工具名的前缀（小写字母、数字、下划线），工具会叫 myhot_get_latest、myhot_search……
+   * MCP 工具名的前缀（小写字母、数字、下划线），工具会叫 guanchao_get_latest、guanchao_search……
    * 已经有人接入后就不要再改。
    */
   mcpPrefix: "guanchao",

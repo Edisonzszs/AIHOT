@@ -1,30 +1,22 @@
-# 参与贡献
+# 参与 AI 观潮的维护
 
-欢迎提交可复现的问题、文档修正，以及对其他行业也有用的改进。中文或英文都可以。
+本仓库维护 AI 观潮的站点配置、内容筛选、采集与 Agent 接入能力。欢迎提供可复现的问题、文档修正和与实际使用场景相关的改进。
 
-## 去哪里交流
+## 反馈与安全
 
-- [Issues](https://github.com/KKKKhazix/AIHOT/issues/new/choose)：可复现的 Bug 和有明确场景的功能建议。
-- [部署与使用问答](https://github.com/KKKKhazix/AIHOT/discussions/categories/q-a)：安装、配置、部署和使用问题；问题解决后可以标记答案。
-- [想法交流](https://github.com/KKKKhazix/AIHOT/discussions/categories/ideas)：先讨论方向和使用场景。
-- [作品展示](https://github.com/KKKKhazix/AIHOT/discussions/categories/show-and-tell)：分享你搭建的行业热点站和实践经验。
-- 安全漏洞请按 [安全报告说明](SECURITY.md) 私密提交。
-
-## 贡献范围
-
-优先欢迎部署体验、通用采集能力、处理流程、公开接口、可访问性、文档和可复现故障的改进。大幅调整架构或产品行为前，先在 Issue 或讨论区说明场景和方案，避免投入后才发现方向不合适。
-
-仅适合你所在行业的信源、品牌和精选标准，可以先在自己的仓库里调整 `industry/`，参考 [定制文档](docs/customize.md)。出于合规和风险考虑，完整运营信源名单暂不分享；本仓库也不持续维护微博、小红书等平台的专用采集适配，可以按 [信源文档](docs/sources.md) 接入你自行维护的外部采集结果。
+- 网站使用问题通过[AI 观潮反馈页](http://47.251.118.253:911/feedback)提交。
+- GitHub Issues 和 Discussions 目前未启用；不要把本站部署问题发到上游项目。
+- 安全问题按 [SECURITY.md](SECURITY.md) 处理，不公开密钥和漏洞利用细节。
 
 ## 提交改动
 
-1. Fork 本仓库，从最新的 `main` 创建自己的分支。若只是搭建一个独立站点，可以用 [Use this template](https://github.com/KKKKhazix/AIHOT/generate)；模板生成的项目没有共享提交历史，后续贡献代码或合并上游更新更适合用 Fork。
-2. 阅读 [AGENTS.md](AGENTS.md) 和改动对应的文档。保持一次 PR 解决一个清楚的问题，不夹带无关重构。
-3. 按 [部署文档](docs/deploy.md) 配置本地环境。使用独立测试库，开发时关闭采集、模型调用和外部推送；不使用生产数据库或真实付费服务做测试。
-4. 验证改动涉及的行为，在 PR 中写明运行结果。代码改动执行 `npm run typecheck`、`npm test`、网页构建与网页测试；后端测试库名必须以 `_test` 或 `_ci` 结尾，先执行迁移。运行中的站点可用 `node scripts/smoke.ts --base http://localhost:3000` 检查。纯文档或模板改动核对链接、语法和实际展示即可，不需要为了凑数量新增测试。
-   备份恢复测试需要 `tar`、与服务端版本兼容的 `pg_dump`/`pg_restore`，以及测试数据库账号的 `CREATEDB` 权限；测试会创建并清理独立的临时恢复库和文件目录，不访问真实对象存储。
-5. 向本仓库 `main` 提交 PR，关联相关 Issue。页面改动附截图；涉及配置或升级步骤时同步更新文档。
+1. 从本仓库最新 `main` 创建工作分支，阅读 [AGENTS.md](AGENTS.md) 和相应文档。
+2. 一次改动解决一个明确问题，不夹带无关重构。行业、品牌、信源和提示词优先在 `industry/` 配置。
+3. 开发测试使用独立测试库。关闭采集、模型调用、飞书与 IndexNow 外部操作，不使用生产数据或真实付费服务做测试。
+4. 验证行为变化：`npm run typecheck`、后端测试、web 构建及前端测试。测试库名必须以 `_test` 或 `_ci` 结尾，先执行数据库迁移；运行中的站点使用 `scripts/smoke.ts` 检查。
+5. 纯文档修改核对内容、链接和实际展示即可。备份恢复测试需要 `tar`、兼容版本的 `pg_dump`/`pg_restore` 及测试账号的 `CREATEDB` 权限。
+6. 提交 PR 或由维护者审阅后合并，明确列出验证结果和配置变更。CI 配置不代表生产环境自动部署。
 
-`main` 通过 PR 合并，GitHub 的 `check` 和 `docker` 检查通过且分支包含最新 `main` 后才能合并。采用 squash 合并；主仓库维护分支合并后自动删除。
+不要提交 `.env`、密钥、管理员密码、Cookie、生产数据库或未获授权的素材。日志和截图需先脱敏。
 
-请勿提交 `.env`、密钥、管理员密码、Cookie、生产数据或未获授权的素材；日志和截图也要先移除敏感信息。代码沿用 [MIT 许可证](LICENSE)，品牌和第三方素材说明见 [NOTICE](NOTICE)。
+代码沿用 [MIT 许可证](LICENSE)，上游和第三方归属见 [NOTICE](NOTICE)。保留原始版权，不把上游作者身份当作本站运营者。

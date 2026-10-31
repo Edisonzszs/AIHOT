@@ -5,8 +5,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        部署与使用问题可以先到 [问答区](https://github.com/KKKKhazix/AIHOT/discussions/categories/q-a) 交流。
-        安全漏洞请通过 [私密漏洞报告](https://github.com/KKKKhazix/AIHOT/security/advisories/new) 提交。
+        AI 观潮使用问题可先通过 [站内反馈](http://47.251.118.253:911/feedback) 提交。
+        安全漏洞请先阅读 [安全报告说明](https://github.com/Edisonzszs/AIHOT/blob/main/SECURITY.md)，不要在公开 Issue 中披露利用细节。
         请勿上传完整 .env、API Key、管理员密码、Cookie 或生产数据库。
   - type: input
     id: revision
